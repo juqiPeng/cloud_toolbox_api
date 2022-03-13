@@ -16,7 +16,7 @@ class PdfToImage:
     
     def convert(self):
         with tempfile.TemporaryDirectory() as path:
-            images = convert_from_path(self.filename, output_folder=path, dpi=96)
+            images = convert_from_path(self.filename, output_folder=path, dpi=200)
             for index, image in enumerate(images):
                 if not os.path.exists(self.image_path):
                     os.makedirs(self.image_path)

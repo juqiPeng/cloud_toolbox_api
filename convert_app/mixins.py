@@ -26,8 +26,6 @@ class FileUploadViewMixin:
         _, ext = os.path.splitext(filename)
         uid = str(uuid.uuid4())
         to_save_filename = f"{settings.MEDIA_ROOT}/{uid}{ext}"
-        print(to_save_filename)
-        print(file.chunks())
         
         with open(to_save_filename, 'wb') as file_writer:
             print(file_writer)
@@ -71,6 +69,6 @@ class FileDownloadViewMixin:
         
         response = StreamingHttpResponse(down_chunk_file_manager(file_path))
         response['Content-Type'] = 'application/octet-stream'
-        response['Content-Disposition'] = 'attachment;filename="{0}"'.format(file_path)
+        # response['Content-Disposition'] = 'attachment;filename="{0}"'.format(file_path)
  
         return response
